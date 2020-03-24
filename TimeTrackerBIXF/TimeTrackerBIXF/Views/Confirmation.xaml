@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:TimeTrackerBIXF"
+             x:Class="TimeTrackerBIXF.Views.Confirmation">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Fill" Orientation="Vertical" HorizontalOptions="Fill" >
+            
+            <StackLayout  VerticalOptions="EndAndExpand" HorizontalOptions="Fill" Padding="0" Margin="0">
+                
+                <lottie:AnimationView
+                 x:Name="LottieView" 
+                 Animation="freportes_loading.json" 
+                 Loop="True" 
+                 AutoPlay="True"
+                 HeightRequest="200" 
+                 WidthRequest="162"
+                 HorizontalOptions="FillAndExpand" 
+                 Margin="0"/>
+
+                <Label Style="{StaticResource LabelNFB}" Text="{Binding CheckingMsg}" d:Text="Confirmando cuenta" TextColor="#3E3F3E" FontSize="32" HorizontalTextAlignment="Center" />
+                <Label Style="{StaticResource LabelNFR}" Text="Contacta a tu encargado para continuar." TextColor="#3E3F3E" FontSize="14" HorizontalTextAlignment="Center" />
+
+                <AbsoluteLayout Padding="0"  Margin="0">
+
+                    <StackLayout AbsoluteLayout.LayoutBounds="0,1, 1, 240" AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" BackgroundColor="Transparent" Padding="0" Margin="0">
+                        <Image  Aspect="AspectFill"   Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.ConfirmationWave3.png}"   
+                     HeightRequest="240"/>
+                    </StackLayout>
+
+                    <StackLayout AbsoluteLayout.LayoutBounds="0,1, 1, 240" AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" BackgroundColor="Transparent">
+                        <Image Aspect="AspectFill"    Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.ConfirmationWave2.png}"   
+                     HeightRequest="240" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <StackLayout AbsoluteLayout.LayoutBounds="0,1, 1, 160" AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" BackgroundColor="Transparent">
+                        <Image Aspect="AspectFill"    Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.ConfirmationWave1.png}"   
+                     HeightRequest="160"/>
+                    </StackLayout>
+
+                    
+                </AbsoluteLayout>
+            </StackLayout>
+
+
+        </StackLayout>
+
+
+
+    </ContentPage.Content>
+</ContentPage>

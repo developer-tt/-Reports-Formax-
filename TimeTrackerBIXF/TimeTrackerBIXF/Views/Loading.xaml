@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TimeTrackerBIXF.Views.Loading">
+    <StackLayout IsVisible="true" 
+                 VerticalOptions="FillAndExpand" 
+                 HorizontalOptions="FillAndExpand" 
+                 BackgroundColor="Transparent" >
+
+        <StackLayout
+            
+            Opacity="1"
+            IsVisible="true"
+            Padding="30"
+            BackgroundColor="#0099FF"
+            HorizontalOptions="Center"
+            VerticalOptions="CenterAndExpand">
+            <ActivityIndicator IsRunning="True" Color="White" />
+            <Label
+                    x:Name="LabelMessage"
+                FontAttributes="Bold"
+                TextColor="White" />
+        </StackLayout>
+
+    </StackLayout>
+    </popup:PopupPage>

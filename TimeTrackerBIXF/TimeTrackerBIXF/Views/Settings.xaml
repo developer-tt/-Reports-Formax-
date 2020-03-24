@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              NavigationPage.HasNavigationBar="False"
+             xmlns:local="clr-namespace:TimeTrackerBIXF"
+             mc:Ignorable="d"
+             x:Class="TimeTrackerBIXF.Views.Settings">
+    <ContentPage.Content>
+        <AbsoluteLayout VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="White">
+
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0, 1, 400" AbsoluteLayout.LayoutFlags="XProportional,WidthProportional" BackgroundColor="Transparent">
+                <Image Aspect="AspectFill"    Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.ReportsWave1.png}"   
+                     HeightRequest="400" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0, 1, 138" AbsoluteLayout.LayoutFlags="XProportional,WidthProportional" BackgroundColor="Transparent" Padding="0" Margin="0">
+                <Image  Aspect="AspectFill"   Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.ReportsWave2.png}"   
+                     HeightRequest="138"/>
+            </StackLayout>
+
+
+
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0, 1, 1" AbsoluteLayout.LayoutFlags="All" Margin="0" Padding="0">
+
+                <Grid BackgroundColor="Transparent" Padding="0" RowSpacing="20" Margin="16,20,16,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Image  Grid.Row="0" Grid.Column="0"    
+                            Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.Left.png}"   
+                            HeightRequest="20" WidthRequest="20"  HorizontalOptions="Start">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackPressedCommand}" NumberOfTapsRequired="1"/>
+                        </Image.GestureRecognizers>
+                        
+                    </Image>
+
+                    <Label   Style="{StaticResource LabelNFR}"  Grid.Row="1" Grid.Column="0" d:Text="Ajustes" Text="Ajustes" TextColor="White" FontSize="36"  />
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="9*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image  Grid.Row="0" Grid.Column="0"    
+                            Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.user.png}"   
+                     HeightRequest="30" WidthRequest="30"  HorizontalOptions="Start" VerticalOptions="Center" />
+
+                        <Label  Style="{StaticResource LabelNFR}" Grid.Column="1" d:Text="Alberto Gutierrez" Text="{Binding Name}" TextColor="White" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+
+                    </Grid>
+                    
+                </Grid>
+                
+                <Frame BackgroundColor="White" Visual="Material" HasShadow="True" Margin="16,0,16,16" CornerRadius="10">
+                    <Grid BackgroundColor="Transparent" Padding="0" RowSpacing="20" Margin="16,10,16,20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                       
+
+                        <Grid Grid.Row="0" RowSpacing="15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="1"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="7*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <Frame  Grid.Row="0" Grid.Column="0" CornerRadius="20" BackgroundColor="#C8E9FF" Padding="0" HeightRequest="40" WidthRequest="40" HorizontalOptions="Start">
+                                <Image  Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.settings1.png}"  HeightRequest="20" WidthRequest="20" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            </Frame>
+
+                            <Label Grid.Column="1"   VerticalTextAlignment="Center" HorizontalOptions="Start"  Style="{StaticResource LabelNFR}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Versión de App: " FontSize="18"  TextColor="#575757" Style="{StaticResource SpanNFR}" />
+                                        <Span Text="{Binding AppVersion}" d:Text="2.0" FontSize="18"  TextColor="#0099FF" Style="{StaticResource SpanNFR}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+
+                            </Label>
+
+                            <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#E8E8E8" HeightRequest="1"   />
+
+                        </Grid>
+
+                        <Grid Grid.Row="1" RowSpacing="15">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Settings2Command}"/>
+                            </Grid.GestureRecognizers>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="1"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="7*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <Frame  Grid.Row="0" Grid.Column="0" CornerRadius="20" BackgroundColor="#C8E9FF" Padding="0" HeightRequest="40" WidthRequest="40" HorizontalOptions="Start">
+                                <Image  Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.settings2.png}"  HeightRequest="20" WidthRequest="20" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            </Frame>
+
+                            <Label Style="{StaticResource SpanNFR}" Grid.Column="1" Text="Borrar Dispositivo" FontSize="18"  TextColor="#575757"  VerticalTextAlignment="Center" HorizontalOptions="Start" />
+
+                            <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#E8E8E8" HeightRequest="1"   />
+
+                        </Grid>
+
+
+                        <Grid Grid.Row="2" RowSpacing="10">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Settings3Command}"/>
+                            </Grid.GestureRecognizers>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="1"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="7*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <Frame  Grid.Row="0" Grid.Column="0" CornerRadius="20" BackgroundColor="#C8E9FF" Padding="0" HeightRequest="40" WidthRequest="40" HorizontalOptions="Start">
+                                <Image  Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.settings3.png}"  HeightRequest="20" WidthRequest="20" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            </Frame>
+
+                            <Label Style="{StaticResource SpanNFR}" Grid.Column="1" Text="Cerrar Sesión" FontSize="18"  TextColor="#575757"  VerticalTextAlignment="Center" HorizontalOptions="Start" />
+                            
+                        </Grid>
+
+                    </Grid>
+
+                </Frame>
+
+
+
+            </StackLayout>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+  x:Class="TimeTrackerBIXF.Styles"
+      xmlns:local="clr-namespace:TimeTrackerBIXF"
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Style TargetType="Label" x:Key="LabelMFR">
+        <Setter Property="FontFamily">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="MontserratLight" />
+                    <On Platform="Android" Value="Montserrat-Light.ttf#MontserratLight" />
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="Label" x:Key="LabelMFL">
+        <Setter Property="FontFamily">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="MontserratRegular" />
+                    <On Platform="Android" Value="Montserrat-Regular.ttf#MontserratRegular" />
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Label" x:Key="LabelNFR">
+        <Setter Property="FontFamily">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="NunitoRegular" />
+                    <On Platform="Android" Value="Nunito-Regular.ttf#NunitoRegular" />
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Label" x:Key="LabelNFB">
+        <Setter Property="FontFamily">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="NunitoBold" />
+                    <On Platform="Android" Value="Nunito-Bold.ttf#NunitoBold" />
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Label" x:Key="LabelNFL">
+        <Setter Property="FontFamily">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="NunitoLight" />
+                    <On Platform="Android" Value="Nunito-Light.ttf#NunitoLight" />
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Entry" x:Key="EntryNFR">
+        <Setter Property="FontFamily">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="NunitoRegular" />
+                    <On Platform="Android" Value="Nunito-Regular.ttf#NunitoRegular" />
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="ButtonNFR">
+        <Setter Property="FontFamily">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="NunitoRegular" />
+                    <On Platform="Android" Value="Nunito-Regular.ttf#NunitoRegular" />
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Picker" x:Key="PickerNFB">
+        <Setter Property="FontFamily">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="NunitoBold" />
+                    <On Platform="Android" Value="Nunito-Bold.ttf#NunitoBold" />
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="SpanNFR">
+        <Setter Property="FontFamily">
+            <Setter.Value>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="NunitoRegular" />
+                    <On Platform="Android" Value="Nunito-Regular.ttf#NunitoRegular" />
+                </OnPlatform>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,138 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\checklist.png" />
+    <None Remove="Assets\Images\ConfirmationWave1.png" />
+    <None Remove="Assets\Images\ConfirmationWave2.png" />
+    <None Remove="Assets\Images\ConfirmationWave3.png" />
+    <None Remove="Assets\Images\cross.png" />
+    <None Remove="Assets\Images\expand.png" />
+    <None Remove="Assets\Images\gear.png" />
+    <None Remove="Assets\Images\Home.png" />
+    <None Remove="Assets\Images\Left.png" />
+    <None Remove="Assets\Images\LoginWave1.png" />
+    <None Remove="Assets\Images\LoginWave2.png" />
+    <None Remove="Assets\Images\LoginWave3.png" />
+    <None Remove="Assets\Images\refresh.png" />
+    <None Remove="Assets\Images\ReportsWave1.png" />
+    <None Remove="Assets\Images\ReportsWave2.png" />
+    <None Remove="Assets\Images\right.png" />
+    <None Remove="Assets\Images\RptRectangle.png" />
+    <None Remove="Assets\Images\settings1.png" />
+    <None Remove="Assets\Images\settings2.png" />
+    <None Remove="Assets\Images\settings2_dialog.png" />
+    <None Remove="Assets\Images\settings3.png" />
+    <None Remove="Assets\Images\settings3_dialog.png" />
+    <None Remove="Assets\Images\user.png" />
+    <None Remove="PowerBIViewer.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\checklist.png" />
+    <EmbeddedResource Include="Assets\Images\ConfirmationWave1.png" />
+    <EmbeddedResource Include="Assets\Images\ConfirmationWave2.png" />
+    <EmbeddedResource Include="Assets\Images\ConfirmationWave3.png" />
+    <EmbeddedResource Include="Assets\Images\cross.png" />
+    <EmbeddedResource Include="Assets\Images\expand.png" />
+    <EmbeddedResource Include="Assets\Images\gear.png" />
+    <EmbeddedResource Include="Assets\Images\Home.png" />
+    <EmbeddedResource Include="Assets\Images\Left.png" />
+    <EmbeddedResource Include="Assets\Images\LoginWave1.png" />
+    <EmbeddedResource Include="Assets\Images\LoginWave2.png" />
+    <EmbeddedResource Include="Assets\Images\LoginWave3.png" />
+    <EmbeddedResource Include="Assets\Images\refresh.png" />
+    <EmbeddedResource Include="Assets\Images\ReportsWave1.png" />
+    <EmbeddedResource Include="Assets\Images\ReportsWave2.png" />
+    <EmbeddedResource Include="Assets\Images\right.png" />
+    <EmbeddedResource Include="Assets\Images\settings1.png" />
+    <EmbeddedResource Include="Assets\Images\settings2.png" />
+    <EmbeddedResource Include="Assets\Images\settings2_dialog.png" />
+    <EmbeddedResource Include="Assets\Images\settings3.png" />
+    <EmbeddedResource Include="Assets\Images\settings3_dialog.png" />
+    <EmbeddedResource Include="Assets\Images\user.png" />
+    <EmbeddedResource Include="PowerBIViewer.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="FodyWeavers.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="3.0.0" />
+    <PackageReference Include="Fody" Version="6.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="5.2.7" />
+    <PackageReference Include="Microsoft.PowerBI.Api" Version="2.5.0" />
+    <PackageReference Include="Microsoft.PowerBI.JavaScript" Version="2.10.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.2.6" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.2.0.223" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\RptRectangle.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Settings3Dialog.xaml.cs">
+      <DependentUpon>Settings3Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Settings2Dialog.xaml.cs">
+      <DependentUpon>Settings2Dialog.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Styles.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Confirmation.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Loading.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Login.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Reports.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ReportViewer.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Settings.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Reports.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\ReportViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+</Project>

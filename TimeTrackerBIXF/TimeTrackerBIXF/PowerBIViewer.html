@@ -1,0 +1,191 @@
+﻿<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div id="embedContainer"></div>
+
+    <div class="reportpageslist">
+        <div id="reportpagesbuttons">
+        </div>
+
+    </div>
+
+    <script src="https://microsoft.github.io/PowerBI-JavaScript/demo/node_modules/jquery/dist/jquery.js"></script>
+    <script src="https://microsoft.github.io/PowerBI-JavaScript/demo/node_modules/powerbi-client/dist/powerbi.js"></script>
+
+
+    <script type="text/javascript">
+
+        var Token = "";
+        var EmbedUrl = "";
+        var Id = "";
+
+        var report;
+
+        var $reportPagesList = $('#reportpagesbuttons');
+        
+        var loaded = 0;
+
+        var arr = [];
+        var arrDisplayNames = [];
+        var DocReady = 0;
+
+        
+        $(function () {
+            DocReady = 1;
+        });
+
+        
+
+        function SetTokens(token, url, id) {                                 
+            
+            loaded = 0;
+
+            arr = [];
+            arrDisplayNames = [];
+
+            if (report !== undefined) {
+                report.off();
+            }
+            
+            // Get models. models contains enums that can be used.
+            var models = window['powerbi-client'].models;
+            var permissions = models.Permissions.All;
+
+            var embedConfiguration = {
+                type: 'report',
+                tokenType: models.TokenType.Embed,
+                accessToken: token,
+                embedUrl: url,
+                id: id,
+                permissions: permissions,
+                pageView: 'fitToWidth',
+                viewMode: models.ViewMode.View,
+                settings: {
+                    filterPaneEnabled: false,
+                    layoutType: models.LayoutType.MobilePortrait
+                }
+            };
+
+            var $reportContainer = $('#embedContainer');
+            report = powerbi.embed($reportContainer.get(0), embedConfiguration);
+
+            //report.off();
+
+            report.on('loaded', function (event) {
+
+                loaded = 1;
+
+                report.getPages().then(function (pages) {
+                    if (pages.length > 0) {
+                        jQuery.map(pages, function (page, index) {
+                            
+                            if (page === pages[0]) {
+                                page.isActive = true;
+                            }
+
+                            arr.push(page.name);
+                            arrDisplayNames.push(page.displayName);
+
+                            return generateReportPage(page, index);
+
+                        }).forEach(function (element) {
+                            $reportPagesList.append(element);
+                        });
+                    }
+                });
+            });
+
+            report.on('error', function (event) {
+                loaded = 2;
+            });
+
+            report.on('pageChanged', function (event) {
+                updateActivePage(event.detail.newPage);
+            });
+
+
+            return "loaded";
+        }
+
+        function ReportLoaded() {
+            return loaded;
+        }
+
+        function ReportPages() {
+            return arr;
+        }
+
+        function ReportPagesDisplayNames() {
+            return arrDisplayNames;
+        }
+
+        function ReportDocRed() {
+            return DocReady;
+        }
+        //// Helper function to generate pages list
+        function generateReportPage(page, index) {
+
+            var $page = $('<input>').attr({ type: 'hidden' })
+                .data('page', page)
+                .data('index', index)
+                .text(page.displayName);
+
+            if (page.isActive) {
+                $page.addClass('active');
+            }
+
+            return $page;
+        }
+
+        function updateActivePage(newPage) {
+            // Remove active class
+            var reportButtons = $reportPagesList.children('input');
+
+            reportButtons.each(function (index, element) {
+                var $element = $(element);
+                var buttonPage = $element.data('page');
+                if (buttonPage.isActive) {
+                    buttonPage.isActive = false;
+                    $element.removeClass('active');
+                }
+            });
+
+            // Set active class
+            reportButtons.each(function (index, element) {
+                var $element = $(element);
+                var buttonPage = $element.data('page');
+                if (buttonPage.name === newPage.name) {
+                    buttonPage.isActive = true;
+                    $element.addClass('active');
+                }
+            });
+        }
+               
+        function changePageByName(name) {
+
+            var reportButtons = $reportPagesList.children('input');
+           
+            var pageIndex = -1;
+
+            reportButtons.each(function (index, element) {
+                var $element = $(element);
+
+                if ($element.data('page').name === name) {
+
+                    //var buttonPage = $element.data('page');
+                    pageIndex = index;
+                    report.setPage($element.data('page').name);
+                }
+            });
+
+            return pageIndex;
+        }
+
+    </script>
+
+</body>
+
+</html>  

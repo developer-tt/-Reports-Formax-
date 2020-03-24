@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
+
+  <!-- The background color, preferably the same as your normal theme -->
+  <item android:drawable="@color/colorSplash"/>
+
+  <!-- Your product logo - 144dp color version of your app icon -->
+  <item>
+
+    <bitmap
+      android:src="@drawable/CenterSplash"
+      android:gravity="center"/>
+
+  </item>
+
+  <item>
+
+    <bitmap
+      android:src="@drawable/bsplash"
+      android:gravity="fill_horizontal|bottom"/>
+
+  </item>
+  
+</layer-list>

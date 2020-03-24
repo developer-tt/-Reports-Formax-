@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:local="clr-namespace:TimeTrackerBIXF"
+             x:Class="TimeTrackerBIXF.Views.ReportViewer">
+    <ContentPage.Content>
+        <AbsoluteLayout VerticalOptions="Fill" HorizontalOptions="Fill">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0, 1, 400" AbsoluteLayout.LayoutFlags="XProportional,WidthProportional" BackgroundColor="Transparent">
+                <Image Aspect="AspectFill"    Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.ReportsWave1.png}"   
+                     HeightRequest="400" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0, 1, 138" AbsoluteLayout.LayoutFlags="XProportional,WidthProportional" BackgroundColor="Transparent" Padding="0" Margin="0">
+                <Image  Aspect="AspectFill"   Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.ReportsWave2.png}"   
+                     HeightRequest="138"/>
+            </StackLayout>
+
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+
+                <Grid BackgroundColor="Transparent"  Padding="0" RowSpacing="20" Margin="16,40,16,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label   Style="{StaticResource LabelNFL}" Grid.Row="0" Grid.ColumnSpan="2"  d:Text="Pisa 2019" x:Name="ReportName" TextColor="White" FontSize="36" Grid.Column="0" />
+                  
+                    
+
+                    <Frame Padding="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Visual="Material">
+                        <StackLayout>
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Picker x:Name="pickerReportPages" Visual="Material" Grid.ColumnSpan="2"
+        Title="Buscar Categoría"
+                            
+                            BackgroundColor="White"
+                            TextColor="#0287DF"
+                            TitleColor="#0287DF"
+                                Style="{StaticResource PickerNFB}"        
+                            />
+
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                                        
+                </Grid>
+
+                <Frame  BackgroundColor="White" Visual="Material" HasShadow="True" Margin="16,0,16,40"
+                  VerticalOptions="FillAndExpand"
+                    Padding="8">
+
+                    <WebView x:Name="_webView" BackgroundColor="Red"  VerticalOptions="FillAndExpand"  />
+
+                </Frame>
+
+            </StackLayout>
+
+            
+            <Image  Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.RptRectangle.png}"  
+                        HeightRequest="50"  AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"  
+                    Aspect="Fill"  VerticalOptions="End" Margin="0,0"
+            AbsoluteLayout.LayoutBounds="0,1.03,1,50" />
+
+
+            <Frame CornerRadius="20" BackgroundColor="#0287DF" Padding="10" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
+            AbsoluteLayout.LayoutBounds="0.10,.99,40,40">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="RefreshClicked"/>
+                </Frame.GestureRecognizers>
+                <Image  Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.refresh.png}"  
+                        HeightRequest="24"
+                        WidthRequest="24" />
+
+            </Frame>
+
+
+            <Frame CornerRadius="20" BackgroundColor="#0287DF" Padding="10" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
+            AbsoluteLayout.LayoutBounds="0.30,.99,40,40">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="PreviousClicked"/>
+                </Frame.GestureRecognizers>
+                <Image  Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.Left.png}"  
+                        HeightRequest="24"
+                        WidthRequest="24" />
+
+            </Frame>
+
+            <Frame CornerRadius="20" BackgroundColor="#0287DF" Padding="10" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
+            AbsoluteLayout.LayoutBounds="0.50,.99,40,40">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="HomeClicked"/>
+                </Frame.GestureRecognizers>
+                <Image  Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.Home.png}"  
+                        HeightRequest="24"
+                        WidthRequest="24" />
+
+            </Frame>
+
+            <Frame CornerRadius="20" BackgroundColor="#0287DF" Padding="10" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
+            AbsoluteLayout.LayoutBounds="0.70,0.99,40,40">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="NextClicked"/>
+                </Frame.GestureRecognizers>
+                <Image  Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.right.png}"  
+                        HeightRequest="24"
+                        WidthRequest="24" />
+
+            </Frame>
+            <Frame CornerRadius="20" BackgroundColor="#0287DF" Padding="10" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
+            AbsoluteLayout.LayoutBounds=".90,0.99,40,40">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SettingsClicked"/>
+                </Frame.GestureRecognizers>
+                <Image  Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.gear.png}"  
+                        HeightRequest="24"
+                        WidthRequest="24" />
+
+            </Frame>
+
+
+
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+                   xmlns:local="clr-namespace:TimeTrackerBIXF"
+             x:Class="TimeTrackerBIXF.Views.Settings3Dialog">
+    <StackLayout IsVisible="true" 
+                 VerticalOptions="FillAndExpand" 
+                 HorizontalOptions="FillAndExpand" 
+                 BackgroundColor="Transparent" >
+
+        <Frame  Opacity="1" BackgroundColor="White" Visual="Material" HasShadow="True" Margin="16" Padding="4" CornerRadius="10" HorizontalOptions="FillAndExpand"
+            VerticalOptions="CenterAndExpand">
+
+            <StackLayout Opacity="1" Padding="30">
+
+                <Image      Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.cross.png}"   
+                            HeightRequest="15" WidthRequest="15"  HorizontalOptions="EndAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ClosePopUp_Clicked"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Image      Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.settings3_dialog.png}"   
+                            HeightRequest="60" WidthRequest="60"  HorizontalOptions="Center" />
+
+
+                <Label Style="{StaticResource LabelNFB}" Text="Cerrar sesión" TextColor="#6B6B6B" FontSize="14" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" Margin="0,10,0,5"/>
+
+                <Label Style="{StaticResource LabelNFR}" Text="Estas seguro que deseas continuar?" TextColor="#6B6B6B" FontSize="12"  HorizontalOptions="CenterAndExpand" Margin="0,0,0,20"/>
+
+
+                <Button Style="{StaticResource ButtonNFR}" Text="Si, cerrar sesión" FontSize="13" BackgroundColor="#0099FF" TextColor="White" Margin="0,10" VerticalOptions="EndAndExpand" CornerRadius="30" HorizontalOptions="Center" Padding="20,5" Clicked="Logout_Clicked"    />
+
+
+            </StackLayout>
+
+        </Frame>
+       
+
+    </StackLayout>
+    </popup:PopupPage>
