@@ -22,13 +22,17 @@
 
             <StackLayout AbsoluteLayout.LayoutBounds="0,0, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
-                <Grid BackgroundColor="Transparent"  Padding="0" RowSpacing="20" Margin="16,40,16,20">
+                <Grid BackgroundColor="Transparent"  Padding="0" RowSpacing="15" Margin="16,15,16,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="8*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
 
-                    <Label   Style="{StaticResource LabelNFL}" Grid.Row="0" Grid.ColumnSpan="2"  d:Text="Pisa 2019" x:Name="ReportName" TextColor="White" FontSize="36" Grid.Column="0" />
+                    <Label   Style="{StaticResource LabelNFL}" Grid.Row="0" Grid.ColumnSpan="2"  d:Text="Pisa 2019" x:Name="ReportName" TextColor="White" FontSize="30" Grid.Column="0" />
                   
                     
 
@@ -41,8 +45,7 @@
                                     <ColumnDefinition Width="2*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Picker x:Name="pickerReportPages" Visual="Material" Grid.ColumnSpan="2"
-        Title="Buscar Categoría"
+                                <Picker x:Name="pickerReportPages" Visual="Material" Grid.ColumnSpan="2" Title="Buscar Categoría"
                             
                             BackgroundColor="White"
                             TextColor="#0287DF"
@@ -56,7 +59,7 @@
                                         
                 </Grid>
 
-                <Frame  BackgroundColor="White" Visual="Material" HasShadow="True" Margin="16,0,16,40"
+                <Frame  BackgroundColor="White" Visual="Material" HasShadow="True" Margin="16,0,16,16"
                   VerticalOptions="FillAndExpand"
                     Padding="8">
 

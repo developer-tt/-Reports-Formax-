@@ -15,10 +15,10 @@
         <Frame  Opacity="1" BackgroundColor="White" Visual="Material" HasShadow="True" Margin="16" Padding="4" CornerRadius="10" HorizontalOptions="FillAndExpand"
             VerticalOptions="CenterAndExpand">
 
-            <StackLayout Opacity="1" Padding="30">
+            <StackLayout Opacity="1" Padding="15">
 
                 <Image      Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.cross.png}"   
-                            HeightRequest="15" WidthRequest="15"  HorizontalOptions="EndAndExpand">
+                            HeightRequest="20" WidthRequest="20"  HorizontalOptions="EndAndExpand">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ClosePopUp_Clicked"/>
                     </Image.GestureRecognizers>

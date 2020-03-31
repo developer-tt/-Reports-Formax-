@@ -6,25 +6,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="TimeTrackerBIXF.Views.Loading">
-    <StackLayout IsVisible="true" 
-                 VerticalOptions="FillAndExpand" 
-                 HorizontalOptions="FillAndExpand" 
-                 BackgroundColor="Transparent" >
+   
 
         <StackLayout
             
             Opacity="1"
             IsVisible="true"
-            Padding="30"
-            BackgroundColor="#0099FF"
+            Padding="15"
+            BackgroundColor="White"
             HorizontalOptions="Center"
             VerticalOptions="CenterAndExpand">
-            <ActivityIndicator IsRunning="True" Color="White" />
+        <ActivityIndicator IsRunning="True" Color="#0099FF" />
             <Label
                     x:Name="LabelMessage"
-                FontAttributes="Bold"
-                TextColor="White" />
+                FontAttributes="None"
+                TextColor="#0099FF" />
         </StackLayout>
 
-    </StackLayout>
+ 
     </popup:PopupPage>

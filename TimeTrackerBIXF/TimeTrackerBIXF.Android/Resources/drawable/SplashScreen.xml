@@ -6,16 +6,16 @@
   <item android:drawable="@color/colorSplash"/>
 
   <!-- Your product logo - 144dp color version of your app icon -->
-  <item>
+  <item android:top="150dp">
 
     <bitmap
       android:src="@drawable/CenterSplash"
-      android:gravity="center"/>
+      android:gravity="top"/>
 
   </item>
 
   <item>
-
+ 
     <bitmap
       android:src="@drawable/bsplash"
       android:gravity="fill_horizontal|bottom"/>

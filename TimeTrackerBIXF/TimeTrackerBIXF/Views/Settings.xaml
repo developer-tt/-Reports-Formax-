@@ -25,7 +25,7 @@
 
             <StackLayout AbsoluteLayout.LayoutBounds="0,0, 1, 1" AbsoluteLayout.LayoutFlags="All" Margin="0" Padding="0">
 
-                <Grid BackgroundColor="Transparent" Padding="0" RowSpacing="20" Margin="16,20,16,20">
+                <Grid BackgroundColor="Transparent" Padding="0" RowSpacing="20" Margin="16,16,16,20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
@@ -37,7 +37,7 @@
 
                     <Image  Grid.Row="0" Grid.Column="0"    
                             Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.Left.png}"   
-                            HeightRequest="20" WidthRequest="20"  HorizontalOptions="Start">
+                            HeightRequest="30" WidthRequest="30"  HorizontalOptions="Start">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding BackPressedCommand}" NumberOfTapsRequired="1"/>
                         </Image.GestureRecognizers>

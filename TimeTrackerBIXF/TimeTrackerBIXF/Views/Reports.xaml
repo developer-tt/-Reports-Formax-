@@ -42,7 +42,7 @@
 
             <StackLayout AbsoluteLayout.LayoutBounds="0,0, 1, 1" AbsoluteLayout.LayoutFlags="All" Margin="0" Padding="0">
 
-                <Grid BackgroundColor="Transparent" Padding="0" RowSpacing="20" Margin="16,40,16,20">
+                <Grid BackgroundColor="Transparent" Padding="0" RowSpacing="15" Margin="16,15,16,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="8*"/>
                         <ColumnDefinition Width="2*"/>
@@ -52,7 +52,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Label  Style="{StaticResource LabelNFL}"  Grid.Row="0" d:Text="Hola, Alberto!" Text="{Binding Name}" TextColor="White" FontSize="36" Grid.Column="0" />
+                    <Label  Style="{StaticResource LabelNFL}"  Grid.Row="0" d:Text="Hola, Alberto!" Text="{Binding Name}" TextColor="White" FontSize="30" Grid.Column="0" />
 
                     <Image  Grid.Row="0" Grid.Column="1" Aspect="AspectFit" 
                             Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.gear.png}"   
@@ -63,8 +63,11 @@
 
                     </Image>
 
-                    <Entry  Style="{StaticResource EntryNFR}"  Placeholder="Buscar Reporte" Visual="Material" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  TextColor="#0287DF" Text="{Binding SearchText}" BackgroundColor="White" ReturnCommand="{Binding EnterPressedCommand}" />
+                    <Entry  Style="{StaticResource EntryNFR}"  Placeholder="Buscar Reporte" Visual="Material" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  FontSize="16" 
+                            TextColor="#0287DF" Text="{Binding SearchText}" BackgroundColor="White" ReturnCommand="{Binding EnterPressedCommand}" />
                 </Grid>
+                
+                
 
                 <Frame BackgroundColor="White" Visual="Material" HasShadow="True" Margin="16,0,16,16">
 
