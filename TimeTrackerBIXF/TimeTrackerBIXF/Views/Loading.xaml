@@ -4,24 +4,42 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              mc:Ignorable="d"
              x:Class="TimeTrackerBIXF.Views.Loading">
-   
 
-        <StackLayout
+    <Frame  Opacity="1" BackgroundColor="White" Visual="Material" HasShadow="True"
+           Padding="4" CornerRadius="10" HorizontalOptions="Center" WidthRequest="250" HeightRequest="250"
             
+            VerticalOptions="Center">
+        <StackLayout
+           
             Opacity="1"
             IsVisible="true"
-            Padding="15"
+            Padding="25"
             BackgroundColor="White"
             HorizontalOptions="Center"
             VerticalOptions="CenterAndExpand">
-        <ActivityIndicator IsRunning="True" Color="#0099FF" />
+
+
+            <lottie:AnimationView
+                 x:Name="LottieView" 
+                 Animation="freportes_loading.json" 
+                 Loop="True" 
+                 AutoPlay="True"
+                 HeightRequest="132" 
+                 WidthRequest="132"
+                />
+
             <Label
+                FontSize="Medium"
                     x:Name="LabelMessage"
                 FontAttributes="None"
                 TextColor="#0099FF" />
+
+
         </StackLayout>
 
- 
-    </popup:PopupPage>
+    </Frame>
+    
+</popup:PopupPage>
