@@ -13,6 +13,7 @@ C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Debug\ne
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Debug\netstandard2.0\Views\Settings.xaml.g.cs
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Debug\netstandard2.0\Views\Settings2Dialog.xaml.g.cs
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Debug\netstandard2.0\Views\Settings3Dialog.xaml.g.cs
+C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Debug\netstandard2.0\TimeTrackerBIXF.csproj.CoreCompileInputs.cache
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Debug\netstandard2.0\TimeTrackerBIXF.AssemblyInfoInputs.cache
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Debug\netstandard2.0\TimeTrackerBIXF.AssemblyInfo.cs
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Debug\netstandard2.0\TimeTrackerBIXF.csproj.Fody.CopyLocal.cache
@@ -20,4 +21,4 @@ C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Debug\ne
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Debug\netstandard2.0\TimeTrackerBIXF.dll
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Debug\netstandard2.0\ref\TimeTrackerBIXF.dll
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Debug\netstandard2.0\TimeTrackerBIXF.pdb
-C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Debug\netstandard2.0\TimeTrackerBIXF.csproj.CoreCompileInputs.cache
+C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Debug\netstandard2.0\TimeTrackerBIXF.csprojAssemblyReference.cache

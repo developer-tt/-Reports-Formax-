@@ -79,9 +79,9 @@ C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.iOS\obj\iPho
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.iOS\obj\iPhoneSimulator\Debug\coremlc\_BundleResourceWithLogicalName.items
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.iOS\obj\iPhoneSimulator\Debug\optimized\
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.iOS\obj\iPhoneSimulator\Debug\TimeTrackerBIXF.iOS.csprojAssemblyReference.cache
+C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.iOS\obj\iPhoneSimulator\Debug\TimeTrackerBIXF.iOS.csproj.CoreCompileInputs.cache
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.iOS\obj\iPhoneSimulator\Debug\TimeTrackerBIXF.iOS.csproj.Fody.CopyLocal.cache
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.iOS\obj\iPhoneSimulator\Debug\XamlC.stamp
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.iOS\obj\iPhoneSimulator\Debug\TimeTrackerBIXF.iOS.csproj.CopyComplete
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.iOS\obj\iPhoneSimulator\Debug\TimeTrackerBIXF.iOS.exe
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.iOS\obj\iPhoneSimulator\Debug\TimeTrackerBIXF.iOS.pdb
-C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.iOS\obj\iPhoneSimulator\Debug\TimeTrackerBIXF.iOS.csproj.CoreCompileInputs.cache

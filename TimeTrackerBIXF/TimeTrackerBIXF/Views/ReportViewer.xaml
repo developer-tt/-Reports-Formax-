@@ -59,9 +59,9 @@
                                         
                 </Grid>
 
-                <Frame  BackgroundColor="White" Visual="Material" HasShadow="True" Margin="16,0,16,16"
+                <Frame  BackgroundColor="White" Visual="Material" HasShadow="True" Margin="5,0,5,16"
                   VerticalOptions="FillAndExpand"
-                    Padding="8">
+                    Padding="5">
 
                     <WebView x:Name="_webView" BackgroundColor="Red"  VerticalOptions="FillAndExpand"  />
 

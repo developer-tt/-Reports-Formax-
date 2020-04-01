@@ -483,7 +483,6 @@ C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\app_shared_libraries\armeabi-v7a\libxamarin-app.so
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\app_shared_libraries\arm64-v8a\libxamarin-app.so
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\android\bin\classes.dex
-C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\stamp\_BuildAdditionalResourcesCache.stamp
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\stamp\_CleanIntermediateIfNuGetsChange.stamp
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\stamp\_CompileToDalvik.stamp
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\stamp\_ConvertCustomView.stamp
@@ -496,4 +495,3 @@ C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\bin\
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\TimeTrackerBIXF.Android.csproj.CoreCompileInputs.cache
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\android\assets\Microsoft.IdentityModel.Clients.ActiveDirectory.pdb
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\android\AndroidManifest.xml
-C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\stamp\SetupDependenciesForDesigner.stamp
