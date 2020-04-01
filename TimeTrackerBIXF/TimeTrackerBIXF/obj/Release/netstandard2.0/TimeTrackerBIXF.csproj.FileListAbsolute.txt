@@ -21,3 +21,4 @@ C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Release\
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Release\netstandard2.0\TimeTrackerBIXF.dll
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Release\netstandard2.0\ref\TimeTrackerBIXF.dll
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Release\netstandard2.0\TimeTrackerBIXF.pdb
+C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF\obj\Release\netstandard2.0\TimeTrackerBIXF.csproj.CoreCompileInputs.cache

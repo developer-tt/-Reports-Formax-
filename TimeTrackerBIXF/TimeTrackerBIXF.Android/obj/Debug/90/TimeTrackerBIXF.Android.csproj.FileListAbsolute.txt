@@ -583,8 +583,6 @@ C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Debug\90\app_shared_libraries\x86\libxamarin-app.so
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Debug\90\app_shared_libraries\x86_64\libxamarin-app.so
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Debug\90\android\bin\classes.dex
-C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Debug\90\stamp\SetupDependenciesForDesigner.stamp
-C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Debug\90\stamp\_BuildAdditionalResourcesCache.stamp
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Debug\90\stamp\_CleanIntermediateIfNuGetsChange.stamp
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Debug\90\stamp\_CompileToDalvik.stamp
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Debug\90\stamp\_ConvertCustomView.stamp

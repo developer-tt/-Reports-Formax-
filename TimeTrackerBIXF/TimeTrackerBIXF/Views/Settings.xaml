@@ -25,7 +25,7 @@
 
             <StackLayout AbsoluteLayout.LayoutBounds="0,0, 1, 1" AbsoluteLayout.LayoutFlags="All" Margin="0" Padding="0">
 
-                <Grid BackgroundColor="Transparent" Padding="0" RowSpacing="20" Margin="16,16,16,20">
+                <Grid BackgroundColor="Transparent" Padding="0" RowSpacing="20" Margin="16,20,16,20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
@@ -41,7 +41,7 @@
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding BackPressedCommand}" NumberOfTapsRequired="1"/>
                         </Image.GestureRecognizers>
-                        
+
                     </Image>
 
                     <Label   Style="{StaticResource LabelNFR}"  Grid.Row="1" Grid.Column="0" d:Text="Ajustes" Text="Ajustes" TextColor="White" FontSize="36"  />
@@ -59,9 +59,9 @@
                         <Label  Style="{StaticResource LabelNFR}" Grid.Column="1" d:Text="Alberto Gutierrez" Text="{Binding Name}" TextColor="White" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
 
                     </Grid>
-                    
+
                 </Grid>
-                
+
                 <Frame BackgroundColor="White" Visual="Material" HasShadow="True" Margin="16,0,16,16" CornerRadius="10">
                     <Grid BackgroundColor="Transparent" Padding="0" RowSpacing="20" Margin="16,10,16,20">
                         <Grid.ColumnDefinitions>
@@ -73,7 +73,7 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                       
+
 
                         <Grid Grid.Row="0" RowSpacing="15">
                             <Grid.RowDefinitions>
@@ -96,7 +96,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Versión de App: " FontSize="18"  TextColor="#575757" Style="{StaticResource SpanNFR}" />
-                                        <Span Text="{Binding AppVersion}" d:Text="2.0" FontSize="18"  TextColor="#0099FF" Style="{StaticResource SpanNFR}"/>
+                                        <Span Text="{Binding AppVersion}" d:Text="2.0" FontSize="14"  TextColor="#0099FF" Style="{StaticResource SpanNFR}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
 
@@ -152,7 +152,7 @@
                             </Frame>
 
                             <Label Style="{StaticResource SpanNFR}" Grid.Column="1" Text="Cerrar Sesión" FontSize="18"  TextColor="#575757"  VerticalTextAlignment="Center" HorizontalOptions="Start" />
-                            
+
                         </Grid>
 
                     </Grid>

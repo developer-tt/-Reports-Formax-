@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.timetracker.formax" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0.1" package="com.timetracker.formax" android:installLocation="auto">
   <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   <uses-permission android:name="android.permission.INTERNET" />
-  <application android:label="Formax" android:usesCleartextTraffic="true" android:name="android.app.Application" android:allowBackup="true" android:icon="@mipmap/ic_launcher">
-    <activity android:configChanges="orientation|screenSize" android:icon="@mipmap/ic_launcher" android:label="Baja Gas Clientes" android:theme="@style/MainTheme" android:name="crc64a8b7e37901ee5a11.MainActivity" />
-    <activity android:noHistory="true" android:theme="@style/Theme.Splash" android:name="crc64a8b7e37901ee5a11.SplashActivity">
+  <application android:label="F. Reportes" android:usesCleartextTraffic="true" android:icon="@mipmap/ic_launcher" android:name="android.app.Application" android:allowBackup="true">
+    <activity android:configChanges="orientation|screenSize" android:icon="@mipmap/ic_launcher" android:label="Formax Reportes" android:screenOrientation="portrait" android:theme="@style/MainTheme" android:name="crc64a8b7e37901ee5a11.MainActivity" />
+    <activity android:noHistory="true" android:screenOrientation="portrait" android:theme="@style/Theme.Splash" android:name="crc64a8b7e37901ee5a11.SplashActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

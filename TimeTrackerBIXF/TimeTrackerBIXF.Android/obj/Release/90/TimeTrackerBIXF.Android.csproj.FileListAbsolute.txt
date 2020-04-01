@@ -11,8 +11,6 @@ C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\TimeTrackerBIXF.Android.csprojAssemblyReference.cache
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\_VerifyXamarinAndroidSupportVersions.stamp
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\stamp\_BuildLibraryImportsCache.stamp
-C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\resourcepaths.cache
-C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\resourcecache.stamp
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\res.flag
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\flata\B6FB9AD597846904.stamp
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\flata\3EE6FE0F8E4F78EC.stamp
@@ -494,3 +492,8 @@ C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\stamp\_GenerateJavaStubs.stamp
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\bin\Release\com.timetracker.formax.aab
+C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\TimeTrackerBIXF.Android.csproj.CoreCompileInputs.cache
+C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\android\assets\Microsoft.IdentityModel.Clients.ActiveDirectory.pdb
+C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\android\AndroidManifest.xml
+C:\Users\alano\Work\Reports-Formax-\TimeTrackerBIXF\TimeTrackerBIXF.Android\obj\Release\90\stamp\SetupDependenciesForDesigner.stamp
