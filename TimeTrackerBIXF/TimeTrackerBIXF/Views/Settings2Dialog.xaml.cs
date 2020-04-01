@@ -20,7 +20,12 @@ namespace TimeTrackerBIXF.Views
 
         private void Delete_Clicked(object sender, System.EventArgs e)
         {
+            App.UsersB.DeleteAll();
+            //Finish();
+            Application.Current.MainPage.Navigation.PopPopupAsync(true);
+            App.Current.MainPage = new Login();
 
         }
+
     }
 }
