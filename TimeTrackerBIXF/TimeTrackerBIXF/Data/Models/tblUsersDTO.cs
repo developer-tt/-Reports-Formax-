@@ -12,8 +12,27 @@ namespace TimeTrackerBIXF.Data.Models
         [PrimaryKey]
         public int UserID { get; set; }
         public string Name { get; set; }
+        public string Email { get; set; }
         public string Code { get; set; }
         public int DeviceID { get; set; }
         public string DeviceStatus { get; set; }
+        public string Levels { get; set; }
+
+        [Ignore]
+        public List<int> LevelIDs
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(Levels))
+                {
+                    return Levels.Split(',').Select(a=> int.Parse(a)).ToList();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+        }
     }
 }

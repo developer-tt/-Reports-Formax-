@@ -26,5 +26,22 @@ namespace TimeTrackerBIXF.DataServices
             return response;
 
         }
+
+        public async Task<Response> FormaxGetUserInfo(string Email)
+        {
+            Response response = new Response();
+
+            if (XPlatform.IsThereInternet)
+            {
+                response = await WSMethods.Post(string.Format(Constants.Url_Formax_GetUserInfo, Email),null);
+                return response;
+            }
+            else
+            {
+                response.Result = Result.NETWORK_UNAVAILABLE;
+            }
+            return response;
+
+        }
     }
 }

@@ -25,22 +25,27 @@
         var report;
 
         var $reportPagesList = $('#reportpagesbuttons');
-        
+
         var loaded = 0;
 
         var arr = [];
         var arrDisplayNames = [];
         var DocReady = 0;
 
-        
-        $(function () {
-            DocReady = 1;
-        });
+        var vUsesParameter = 0;
+        var vstrTable = '';
+        var vstrColumn = '';
+        var vstrOperator = '';
 
-        
+        //$(function () {
+        //    DocReady = 1;
+        //});
 
-        function SetTokens(token, url, id) {                                 
-            
+        window.onload = function () { DocReady = 4; };
+
+        function SetTokens(token, url, id, UsesParameter, strTable, strColumn, strOperator, strValues) {
+            // function SetTokens(token, url, id) {
+
             loaded = 0;
 
             arr = [];
@@ -49,7 +54,7 @@
             if (report !== undefined) {
                 report.off();
             }
-            
+
             // Get models. models contains enums that can be used.
             var models = window['powerbi-client'].models;
             var permissions = models.Permissions.All;
@@ -64,24 +69,27 @@
                 pageView: 'fitToWidth',
                 viewMode: models.ViewMode.View,
                 settings: {
-                    filterPaneEnabled: false,
-                    layoutType: models.LayoutType.MobilePortrait
+                    filterPaneEnabled: false
                 }
+            };
+
+            const newSettings = {
+                filterPaneEnabled: false,
+                layoutType: models.LayoutType.MobileLandscape
             };
 
             var $reportContainer = $('#embedContainer');
             report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 
-            //report.off();
-
-            report.on('loaded', function (event) {
+         
+            report.on('loaded', async function (event) {
 
                 loaded = 1;
 
                 report.getPages().then(function (pages) {
                     if (pages.length > 0) {
                         jQuery.map(pages, function (page, index) {
-                            
+
                             if (page === pages[0]) {
                                 page.isActive = true;
                             }
@@ -96,10 +104,45 @@
                         });
                     }
                 });
+
+                report.getPages().then(function (pages) {
+                    pages[0].hasLayout(models.LayoutType.MobilePortrait).then(function (hasLayout) {
+
+                        if (hasLayout === true) {
+                            report.updateSettings(newSettings);
+                        }
+
+                       
+                    })
+                });
+
+                if (UsesParameter === 1) {
+
+                    var filter = {
+                        $schema: "http://powerbi.com/product/schema#basic",
+                        target: {
+                            table: strTable,
+                            column: strColumn
+                        },
+                        operator: strOperator,
+                        values: strValues.split(","),
+                        filterType: 1
+                    };
+
+                    report.getFilters()
+                        .then(filters => {
+                            filters.push(filter);
+                            return report.setFilters(filters);
+                        });
+                }
+
             });
 
+
+
             report.on('error', function (event) {
-                loaded = 2;
+                loaded = 2 + " " +  `${JSON.stringify(event.detail, null, "  ")} `;
+                report.off("error");
             });
 
             report.on('pageChanged', function (event) {
@@ -163,11 +206,11 @@
                 }
             });
         }
-               
+
         function changePageByName(name) {
 
             var reportButtons = $reportPagesList.children('input');
-           
+
             var pageIndex = -1;
 
             reportButtons.each(function (index, element) {

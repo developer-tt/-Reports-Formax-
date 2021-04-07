@@ -32,6 +32,7 @@ namespace TimeTrackerBIXF.Views
         private Timer Timer_DocLoadedCheck;
 
         bool IsChecking = false;
+        bool IsReadyChecking = false;
         bool Configured = false;
         bool Configuring = false;
 
@@ -54,7 +55,7 @@ namespace TimeTrackerBIXF.Views
 
             _webView.Source = LoadHTMLFileFromResource();
 
-            GenerateEmbedToken();
+            StartDocLoadedTimer();
         }
 
         private async void GenerateEmbedToken()
@@ -85,13 +86,6 @@ namespace TimeTrackerBIXF.Views
 
                         ConfigureReportViewer();
                     }
-                    
-                         
-                    if (!Configured)
-                    {
-                        StartDocLoadedTimer();
-                    }
-
                 }
             }
             catch (HttpOperationException ex)
@@ -130,15 +124,34 @@ namespace TimeTrackerBIXF.Views
                 var EmbedUrl = EmbedConfig.EmbedUrl;
                 var Id = EmbedConfig.Id;
 
-                string result = await _webView.EvaluateJavaScriptAsync($"SetTokens('{Token}','{EmbedUrl}','{Id}')");
+                string strColumn = "";
+                string strTable = "";
+                string strOperator = "";
+                string strValues = "";
 
-                if (string.IsNullOrEmpty(result))
+                if (EmbedConfig.Parameter)
                 {
-                    Configuring = false;
-                    return;
+                    strColumn = EmbedConfig.PColumn;
+                    strTable = EmbedConfig.PTable;
+
+                    switch (EmbedConfig.PValue)
+                    {
+                        case "UserID":
+                            strValues = App.CurrentUser.UserID.ToString();
+                            strOperator = "Eq";
+
+                            break;
+
+                        case "LevelID":
+                            strValues = App.CurrentUser.Levels;
+                            strOperator = "In";
+
+                            break;
+                    }
                 }
 
-                StopDocLoadedTimer();
+
+                string result = await _webView.EvaluateJavaScriptAsync($"SetTokens('{Token}','{EmbedUrl}','{Id}',{(EmbedConfig.Parameter?1:0)},'{EmbedConfig.PTable}','{EmbedConfig.PColumn}','{strOperator}','{strValues}')");
 
                 Configuring = false;
                 Configured = true;
@@ -153,6 +166,24 @@ namespace TimeTrackerBIXF.Views
 
         #region C# => JS Calls
 
+        private void GetReportDocReadyFlag()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                IsReadyChecking = true;
+
+                string ReportDocRed = await _webView.EvaluateJavaScriptAsync("ReportDocRed()");
+                if (ReportDocRed.Equals("4"))
+                {
+                    StopDocLoadedTimer();
+                    GenerateEmbedToken();
+                }
+
+
+                IsReadyChecking = false;
+            });
+        }
+
         private void GetLoadedFlag()
         {
             Device.BeginInvokeOnMainThread(async () =>
@@ -166,10 +197,24 @@ namespace TimeTrackerBIXF.Views
                     GetPages();
                     await Alerts.HideLoadingPageAsync();
                 }
-                else if (Loaded.Equals("2"))
+                else if (Loaded.Contains("2"))
                 {
                     StopTimer();
-                    Alerts.ShowAlert(string.Empty, "Error al cargar el reporte de PowerBI");
+
+                    string PBIError = Loaded.Replace("2","");
+
+                    await Alerts.HideLoadingPageAsync();
+
+                    if (PBIError.Contains("Mobile layout was not found"))
+                    {
+                        Alerts.ShowAlert("Alerta", "No se encontró el layout para dispositivos móviles.Se usara la vista por default.");
+                    }
+                    else
+                    {
+                        Alerts.ShowAlert(string.Empty, "Error al cargar el reporte de PowerBI");
+                    }
+                    
+                   
                 }
 
                 IsChecking = false;
@@ -295,14 +340,14 @@ namespace TimeTrackerBIXF.Views
 
         private void StartDocLoadedTimer()
         {
-            Timer_DocLoadedCheck = Timer_DocLoadedCheck ?? new Timer(1000);
+            Timer_DocLoadedCheck = Timer_DocLoadedCheck ?? new Timer(2000);
             Timer_DocLoadedCheck.Enabled = true;
             Timer_DocLoadedCheck.AutoReset = true;
             Timer_DocLoadedCheck.Elapsed += delegate
             {
-                if (!Configuring && !Configured)
+                if (!IsReadyChecking)
                 {
-                    ConfigureReportViewer();
+                    GetReportDocReadyFlag();
                 }
             };
         }

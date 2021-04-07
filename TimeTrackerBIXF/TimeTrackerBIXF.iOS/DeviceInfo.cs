@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Foundation;
-using TimeTrackerBIXF.Interfaces;
-using TimeTrackerBIXF.iOS;
+﻿using TimeTrackerBIXF.Interfaces;
 using UIKit;
+using Xamarin.Essentials;
 
-[assembly: Xamarin.Forms.Dependency(typeof(DeviceInfo))]
+[assembly: Xamarin.Forms.Dependency(typeof(TimeTrackerBIXF.iOS.DeviceInfo))]
 namespace TimeTrackerBIXF.iOS
 {
     public class DeviceInfo : IDeviceInfo
     {
         public string GetAppVersion()
         {
-            throw new NotImplementedException();
+            return VersionTracking.CurrentVersion;
         }
 
         public string GetDeviceName()
         {
-            throw new NotImplementedException();
+            return Xamarin.Essentials.DeviceInfo.Name;
         }
 
         public string GetDeviceTypeID()
@@ -32,7 +26,7 @@ namespace TimeTrackerBIXF.iOS
 
         public string GetOSVersion()
         {
-            throw new NotImplementedException();
+            return Xamarin.Essentials.DeviceInfo.VersionString;
         }
     }
 }

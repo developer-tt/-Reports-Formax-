@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using TimeTrackerBIXF.Data.AuxModels;
 using TimeTrackerBIXF.Data.Models;
@@ -29,18 +30,23 @@ namespace TimeTrackerBIXF.ViewModels
         public ObservableCollection<WSReport> Items { get; set; }
         public List<WSReport> PrefilteredItems { get; set; }
 
+        public List<WSReport> APIAvailableItems { get; set; }
+
         PowerBIService PowerBiService;
         ReportsService ReportsService;
+
 
         public bool IsRefreshing
         {
             get; set;
         }
 
-        string GroupID = string.Empty;
 
         public string Name { get; set; }
         public string SearchText { get; set; }
+        UsersService UsersService = new UsersService();
+
+        List<string> GroupIDs { get; set; }
 
         public ReportsVM()
         {
@@ -53,15 +59,15 @@ namespace TimeTrackerBIXF.ViewModels
             ReportsService = new ReportsService();
             PowerBiService = new PowerBIService();
 
-            GetGroupID();
-
+            GetTTReports();
         }
+
 
         private void EnterPressed()
         {
             if (string.IsNullOrEmpty(SearchText) || string.IsNullOrWhiteSpace(SearchText))
             {
-                Items = new ObservableCollection<WSReport>(PrefilteredItems); 
+                Items = new ObservableCollection<WSReport>(PrefilteredItems);
             }
             else
             {
@@ -71,16 +77,27 @@ namespace TimeTrackerBIXF.ViewModels
             }
         }
 
-        public void OnReportSelectedChanged()
+        public async void OnReportSelectedChanged()
         {
             if (ReportSelected != null)
             {
-                App.Current.MainPage.Navigation.PushAsync(new ReportViewer(new EmbedConfig() { GroupID = ReportSelected.GroupID, Id = ReportSelected.ReportID, EmbedUrl = ReportSelected.Url, ReportName = ReportSelected.Name }), true);
+
+                Report report = await GetReportByGroupAndName(ReportSelected.GroupID, ReportSelected.EmbeddedName);
+
+                if (report == null)
+                {
+                    Alerts.ShowAlert("Alerta", "No se encontro referencia en PowerBI de este reporte.");
+                }
+                else
+                {
+                    await App.Current.MainPage.Navigation.PushAsync(new ReportViewer(new EmbedConfig() { GroupID = ReportSelected.GroupID, Id = report.Id, EmbedUrl = report.EmbedUrl, ReportName = ReportSelected.Name, Parameter = ReportSelected.Parameter, PColumn = ReportSelected.PColumn, PTable = ReportSelected.PTable, PValue = ReportSelected.PValue }), true);
+                }
+
                 ReportSelected = null;
             }
         }
 
-        private async void GetGroupID()
+        private async void GetTTReports()
         {
             IsRefreshing = true;
             Device.BeginInvokeOnMainThread(async () =>
@@ -107,16 +124,20 @@ namespace TimeTrackerBIXF.ViewModels
                 {
                     if (response.Data != null)
                     {
-                        var Items = JsonConvert.DeserializeObject<List<WSReport>>(response.Data);
-                        GroupID = Items.Where(a => !string.IsNullOrEmpty(a.GroupID)).Select(b => b.GroupID).FirstOrDefault();
+                        APIAvailableItems = JsonConvert.DeserializeObject<List<WSReport>>(response.Data);
+                        Items = new ObservableCollection<WSReport>(APIAvailableItems);
+                        PrefilteredItems = APIAvailableItems;
+
+                        GroupIDs = APIAvailableItems.Where(a => !string.IsNullOrEmpty(a.GroupID)).Select(b => b.GroupID).ToList();
+
 
                         await Alerts.HideLoadingPageAsync();
 
-                        if (!string.IsNullOrEmpty(GroupID))
-                        {
-                            IsRefreshing = false;
-                            GetPowerBIReports();
-                        }
+                        //if (GroupIDs != null && GroupIDs.Count > 0)
+                        //{
+                        //    IsRefreshing = false;
+                        //    //GetPowerBIReports();
+                        //}
                     }
                     else
                     {
@@ -139,58 +160,44 @@ namespace TimeTrackerBIXF.ViewModels
             IsRefreshing = false;
         }
 
-        private async void GetPowerBIReports()
+        private async Task<Report> GetReportByGroupAndName(string GroupID, string Name)
         {
-            IsRefreshing = true;
-            Device.BeginInvokeOnMainThread(async () =>
+            try
             {
-                await Alerts.ShowLoadingPageAsync("Obteniendo reportes");
-
-            });
-
-
-            if (XPlatform.IsThereInternet)
-            {
-                try
+                if(string.IsNullOrEmpty(GroupID) || string.IsNullOrEmpty(Name))
                 {
-                    var tokenCredentials = await PowerBIService.GetAccessTokenSecretAsync();
+                    return null;
+                }
+                var tokenCredentials = await PowerBIService.GetAccessTokenSecretAsync();
 
-                    // Create a Power BI Client object. it's used to call Power BI APIs.
-                    using (var client = new PowerBIClient(new Uri(Constants.ApiUrl), tokenCredentials))
+                // Create a Power BI Client object. it's used to call Power BI APIs.
+                using (var client = new PowerBIClient(new Uri(Constants.ApiUrl), tokenCredentials))
+                {
+
+                    ODataResponseListReport ReportsInGroup = client.Reports.GetReportsInGroup(GroupID);
+
+                    if (ReportsInGroup != null)
                     {
-                        ODataResponseListReport ReportsInGroup = client.Reports.GetReportsInGroup(GroupID);
+                        Report found = ReportsInGroup.Value.Where(a => a.Name.Equals(Name)).FirstOrDefault();
+                        return ReportsInGroup.Value.Where(a => a.Name.Equals(Name)).FirstOrDefault();
+                        //foreach (Report Report in ReportsInGroup.Value)
+                        //{
+                        //    WSReport rpt = APIAvailableItems.Where(a => a.Name.Equals(Report.Name)).FirstOrDefault();
 
-                        Items.Clear();
-                        PrefilteredItems.Clear();
-
-                        if (ReportsInGroup != null)
-                        {
-                            foreach (Report Report in ReportsInGroup.Value)
-                            {
-                                Items.Add(new WSReport() { Name = Report.Name, Url = Report.EmbedUrl, ReportID = Report.Id, GroupID = GroupID });
-                                PrefilteredItems.Add(new WSReport() { Name = Report.Name, Url = Report.EmbedUrl, ReportID = Report.Id, GroupID = GroupID });
-                            }
-                        }
-
-                        await Alerts.HideLoadingPageAsync();
-
+                        //    if (rpt != null)
+                        //    {
+                        //        reports.Add(new WSReport() { Name = Report.Name, Url = Report.EmbedUrl, ReportID = Report.Id, GroupID = GroupID, Parameter = rpt.Parameter, PColumn = rpt.PColumn, PTable = rpt.PTable, PValue = rpt.PValue });
+                        //    }
+                        //}
                     }
                 }
-                catch (Exception ex)
-                {
-                    await Alerts.HideLoadingPageAsync();
-                    Alerts.ShowAlert(string.Empty, "Ocurrio un error al obtener los reportes de PowerBI.");
-                    string Exception = ex.Message;
-                }
             }
-            else
+            catch (Exception EX)
             {
-                await Alerts.HideLoadingPageAsync();
-                Alerts.ShowNetworkError();
+
             }
 
-
-            IsRefreshing = false;
+            return null;
         }
 
         void ExecuteRefreshCommand()
@@ -200,13 +207,14 @@ namespace TimeTrackerBIXF.ViewModels
 
             IsRefreshing = true;
 
-            if (string.IsNullOrEmpty(GroupID))
+
+            if (GroupIDs != null && GroupIDs.Count > 0)
             {
-                GetGroupID();
+                GetTTReports();
             }
             else
             {
-                GetPowerBIReports();
+                //GetPowerBIReports();
             }
 
             IsRefreshing = false;

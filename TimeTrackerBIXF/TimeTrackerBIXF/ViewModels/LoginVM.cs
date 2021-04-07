@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -86,11 +87,13 @@ namespace TimeTrackerBIXF.ViewModels
                             return;
                         }
 
-                        tblUsersDTO User = new tblUsersDTO() { UserID = int.Parse(UserData[0]), Name = UserData[1], Code = UserData[2] };
+                        tblUsersDTO User = new tblUsersDTO() { UserID = int.Parse(UserData[0]), Name = UserData[1], Code = UserData[2], Email = Login.UserName };
                         App.UsersB.DeleteAll();
                         App.UsersB.Create(User);
 
                         await Alerts.HideLoadingPageAsync();
+
+                        await GetFormaxUserInfo();
 
                         RegisterDevice();
                     }
@@ -109,7 +112,32 @@ namespace TimeTrackerBIXF.ViewModels
 
 
         }
-        
+
+        private async Task GetFormaxUserInfo()
+        {
+            Response response = await UsersService.FormaxGetUserInfo(App.CurrentUser.Email);
+            if (response.Result != Result.NETWORK_UNAVAILABLE)
+            {
+                if (response.Result == Result.OK)
+                {
+                    if (response.Data != null)
+                    {
+                        WSFormaxUserInfo WSFormaxUserInfo = JsonConvert.DeserializeObject<WSFormaxUserInfo>(response.Data);
+
+                        if (WSFormaxUserInfo.Success)
+                        {
+
+                            tblUsersDTO current = App.CurrentUser;
+                            current.Levels = string.Join(",", WSFormaxUserInfo.LevelIDs);
+
+                            App.UsersB.Update(current);
+
+                        }
+                    }
+                }
+            }
+        }
+
         private async void RegisterDevice()
         {
             await Alerts.ShowLoadingPageAsync("Registrando dispositivo");

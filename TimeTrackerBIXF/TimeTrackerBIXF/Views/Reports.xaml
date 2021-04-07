@@ -120,7 +120,7 @@
 
             </StackLayout>
 
-            <Frame CornerRadius="30" BackgroundColor="#0287DF" Padding="16" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
+            <Frame CornerRadius="30" HasShadow="False" BackgroundColor="#0287DF" Padding="16" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
             AbsoluteLayout.LayoutBounds=".95,.95,60,60">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding RefreshCommand}" NumberOfTapsRequired="1"/>

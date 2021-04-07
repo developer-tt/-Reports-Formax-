@@ -88,10 +88,9 @@
                             </Grid.ColumnDefinitions>
 
 
-                            <Frame  Grid.Row="0" Grid.Column="0" CornerRadius="20" BackgroundColor="#C8E9FF" Padding="0" HeightRequest="40" WidthRequest="40" HorizontalOptions="Start">
-                                <Image  Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.settings1.png}"  HeightRequest="20" WidthRequest="20" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <Frame  Grid.Row="0" Grid.Column="0" CornerRadius="20" BackgroundColor="#C8E9FF" Padding="10" HeightRequest="20" WidthRequest="20" HorizontalOptions="Start">
+                                <Image  Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.settings1.png}"   HeightRequest="20" WidthRequest="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
                             </Frame>
-
                             <Label Grid.Column="1"   VerticalTextAlignment="Center" HorizontalOptions="Start"  Style="{StaticResource LabelNFR}">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -121,8 +120,8 @@
                             </Grid.ColumnDefinitions>
 
 
-                            <Frame  Grid.Row="0" Grid.Column="0" CornerRadius="20" BackgroundColor="#C8E9FF" Padding="0" HeightRequest="40" WidthRequest="40" HorizontalOptions="Start">
-                                <Image  Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.settings2.png}"  HeightRequest="20" WidthRequest="20" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <Frame  Grid.Row="0" Grid.Column="0" CornerRadius="20" BackgroundColor="#C8E9FF" Padding="10" HeightRequest="20" WidthRequest="20" HorizontalOptions="Start">
+                                <Image  Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.settings2.png}"  HeightRequest="20" WidthRequest="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
                             </Frame>
 
                             <Label Style="{StaticResource SpanNFR}" Grid.Column="1" Text="Borrar Dispositivo" FontSize="18"  TextColor="#575757"  VerticalTextAlignment="Center" HorizontalOptions="Start" />
@@ -147,8 +146,8 @@
                             </Grid.ColumnDefinitions>
 
 
-                            <Frame  Grid.Row="0" Grid.Column="0" CornerRadius="20" BackgroundColor="#C8E9FF" Padding="0" HeightRequest="40" WidthRequest="40" HorizontalOptions="Start">
-                                <Image  Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.settings3.png}"  HeightRequest="20" WidthRequest="20" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <Frame  Grid.Row="0" Grid.Column="0" CornerRadius="20" BackgroundColor="#C8E9FF" Padding="10" HeightRequest="20" WidthRequest="20" HorizontalOptions="Start">
+                                <Image  Source="{local:ImageResource TimeTrackerBIXF.Assets.Images.settings3.png}"   HeightRequest="20" WidthRequest="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
                             </Frame>
 
                             <Label Style="{StaticResource SpanNFR}" Grid.Column="1" Text="Cerrar Sesión" FontSize="18"  TextColor="#575757"  VerticalTextAlignment="Center" HorizontalOptions="Start" />

@@ -24,6 +24,7 @@ namespace TimeTrackerBIXF
         public App()
         {
             InitializeComponent();
+            VersionTracking.Track();
 
             dbConnection = DependencyService.Get<ISQLite>().GetConnection();
 

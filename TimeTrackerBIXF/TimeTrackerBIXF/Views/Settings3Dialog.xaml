@@ -33,7 +33,7 @@
                 <Label Style="{StaticResource LabelNFR}" Text="Estas seguro que deseas continuar?" TextColor="#6B6B6B" FontSize="12"  HorizontalOptions="CenterAndExpand" Margin="0,0,0,20"/>
 
 
-                <Button Style="{StaticResource ButtonNFR}" Text="Si, cerrar sesión" FontSize="13" BackgroundColor="#0099FF" TextColor="White" Margin="0,10" VerticalOptions="EndAndExpand" CornerRadius="30" HorizontalOptions="Center" Padding="20,5" Clicked="Logout_Clicked"    />
+                <Button Style="{StaticResource ButtonNFR}" Text="Si, cerrar sesión" FontSize="13" BackgroundColor="#0099FF" TextColor="White" Margin="0,10" VerticalOptions="EndAndExpand" HeightRequest="40" CornerRadius="20" HorizontalOptions="Center" Padding="20,5" Clicked="Logout_Clicked"    />
 
 
             </StackLayout>

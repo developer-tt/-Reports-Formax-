@@ -59,7 +59,7 @@
                     </Grid>
 
 
-                    <Button Style="{StaticResource ButtonNFR}"  Text="Log In" FontSize="24" BackgroundColor="#0099FF" TextColor="White" Margin="20,10,20,20" VerticalOptions="EndAndExpand" CornerRadius="30" Command="{Binding LogInCommand}" />
+                    <Button Style="{StaticResource ButtonNFR}" HeightRequest="60"  Text="Log In" FontSize="24" BackgroundColor="#0099FF" TextColor="White" Margin="20,10,20,20" VerticalOptions="EndAndExpand" CornerRadius="30" Command="{Binding LogInCommand}" />
                 </StackLayout>
             </ScrollView>
         </StackLayout>

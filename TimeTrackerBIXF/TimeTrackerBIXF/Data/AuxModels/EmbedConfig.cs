@@ -41,5 +41,11 @@ namespace TimeTrackerBIXF.Data.AuxModels
 
         public string ErrorMessage { get; internal set; }
         public string ReportName { get; set; }
+
+        public bool Parameter { get; set; }
+        public string PTable { get; set; }
+        public string PColumn { get; set; }
+        public string PValue { get; set; }
+        public string Operator { get; set; }
     }
 }

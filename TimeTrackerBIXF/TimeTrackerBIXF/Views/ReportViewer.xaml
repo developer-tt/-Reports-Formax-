@@ -22,26 +22,27 @@
 
             <StackLayout AbsoluteLayout.LayoutBounds="0,0, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
-                <Grid BackgroundColor="Transparent"  Padding="0" RowSpacing="20" Margin="16,40,16,20">
+                <Grid BackgroundColor="Transparent"  Padding="0" RowSpacing="20" Margin="16,20,16,10">
+                  
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="8*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
 
                     <Label   Style="{StaticResource LabelNFL}" Grid.Row="0" Grid.ColumnSpan="2"  d:Text="Pisa 2019" x:Name="ReportName" TextColor="White" FontSize="36" Grid.Column="0" />
-                  
-                    
 
-                    <Frame Padding="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Visual="Material">
-                        <StackLayout>
-                            <Grid>
+
+
+                    <Frame Padding="0" HasShadow="False" Margin="0" IsClippedToBounds="True" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Visual="Material" BackgroundColor="Transparent">
+                        <StackLayout Spacing="0" Padding="0" Margin="0">
+                            <Grid RowSpacing="0" Padding="0" Margin="0">
 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="8*"/>
                                     <ColumnDefinition Width="2*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Picker x:Name="pickerReportPages" Visual="Material" Grid.ColumnSpan="2"
+                                <Picker Margin="0" x:Name="pickerReportPages" Visual="Material" Grid.ColumnSpan="2"  
         Title="Buscar Categoría"
                             
                             BackgroundColor="White"
@@ -56,7 +57,7 @@
                                         
                 </Grid>
 
-                <Frame  BackgroundColor="White" Visual="Material" HasShadow="True" Margin="16,0,16,40"
+                <Frame  BackgroundColor="White" Visual="Material" HasShadow="True" Margin="16,-5,16,40"
                   VerticalOptions="FillAndExpand"
                     Padding="8">
 
@@ -73,7 +74,7 @@
             AbsoluteLayout.LayoutBounds="0,1.03,1,50" />
 
 
-            <Frame CornerRadius="20" BackgroundColor="#0287DF" Padding="10" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
+            <Frame HasShadow="False" CornerRadius="20" BackgroundColor="#0287DF" Padding="10" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
             AbsoluteLayout.LayoutBounds="0.10,.99,40,40">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="RefreshClicked"/>
@@ -85,7 +86,7 @@
             </Frame>
 
 
-            <Frame CornerRadius="20" BackgroundColor="#0287DF" Padding="10" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
+            <Frame HasShadow="False" CornerRadius="20" BackgroundColor="#0287DF" Padding="10" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
             AbsoluteLayout.LayoutBounds="0.30,.99,40,40">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="PreviousClicked"/>
@@ -96,7 +97,7 @@
 
             </Frame>
 
-            <Frame CornerRadius="20" BackgroundColor="#0287DF" Padding="10" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
+            <Frame HasShadow="False" CornerRadius="20" BackgroundColor="#0287DF" Padding="10" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
             AbsoluteLayout.LayoutBounds="0.50,.99,40,40">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="HomeClicked"/>
@@ -107,7 +108,7 @@
 
             </Frame>
 
-            <Frame CornerRadius="20" BackgroundColor="#0287DF" Padding="10" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
+            <Frame HasShadow="False" CornerRadius="20" BackgroundColor="#0287DF" Padding="10" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
             AbsoluteLayout.LayoutBounds="0.70,0.99,40,40">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="NextClicked"/>
@@ -117,7 +118,7 @@
                         WidthRequest="24" />
 
             </Frame>
-            <Frame CornerRadius="20" BackgroundColor="#0287DF" Padding="10" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
+            <Frame HasShadow="False" CornerRadius="20" BackgroundColor="#0287DF" Padding="10" HorizontalOptions="Center" AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="60" HeightRequest="60" IsClippedToBounds="True" 
             AbsoluteLayout.LayoutBounds=".90,0.99,40,40">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="SettingsClicked"/>
