@@ -1,4 +1,4 @@
-﻿using Microsoft.PowerBI.Api.V2.Models;
+﻿using Microsoft.PowerBI.Api.Models;
 using System;
 
 
@@ -20,7 +20,7 @@ namespace TimeTrackerBIXF.Data.AuxModels
                 if (EmbedToken != null)
                 {
                     var minutesToExpiration = EmbedToken.Expiration - DateTime.UtcNow;
-                    return (int)minutesToExpiration?.TotalMinutes;
+                    return (int)minutesToExpiration.TotalMinutes;
                 }
                 else
                 {

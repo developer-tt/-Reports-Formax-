@@ -1,5 +1,6 @@
-﻿using Microsoft.PowerBI.Api.V2;
-using Microsoft.PowerBI.Api.V2.Models;
+﻿
+using Microsoft.PowerBI.Api;
+using Microsoft.PowerBI.Api.Models;
 using Microsoft.Rest;
 using Newtonsoft.Json;
 using System;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
@@ -71,18 +73,20 @@ namespace TimeTrackerBIXF.Views
 
                     if (TokenCached == null)
                     {
-                        EmbedToken tokenResponse = client.Reports.GenerateToken(EmbedConfig.GroupID, EmbedConfig.Id, new GenerateTokenRequest(accessLevel: "view"));
+                        //IList<Guid> ds = new List<Guid>();
+                        //ds.Add(Guid.Parse(EmbedConfig.GroupID));
+                        EmbedToken tokenResponse =client.Reports.GenerateToken(Guid.Parse( EmbedConfig.GroupID),Guid.Parse( EmbedConfig.Id), new GenerateTokenRequest(accessLevel: "view"));
 
                         EmbedConfig.EmbedToken = tokenResponse;
 
-                        App.EmbedTokenB.Create(new Data.Models.EmbedTokenDTO() { Expiration = tokenResponse.Expiration, Token = tokenResponse.Token, GroupID = EmbedConfig.GroupID, Id = EmbedConfig.Id, TokenId = tokenResponse.TokenId });
+                        App.EmbedTokenB.Create(new Data.Models.EmbedTokenDTO() { Expiration = tokenResponse.Expiration, Token = tokenResponse.Token, GroupID = EmbedConfig.GroupID, Id = EmbedConfig.Id, TokenId = tokenResponse.TokenId.ToString() });
 
 
                         ConfigureReportViewer();
                     }
                     else
                     {
-                        EmbedConfig.EmbedToken = new EmbedToken(TokenCached.Token, TokenCached.TokenId, TokenCached.Expiration);
+                        EmbedConfig.EmbedToken = new EmbedToken(TokenCached.Token, Guid.Parse(TokenCached.TokenId), TokenCached.Expiration.Value);
 
                         ConfigureReportViewer();
                     }
@@ -94,6 +98,32 @@ namespace TimeTrackerBIXF.Views
                 Alerts.ShowAlert(string.Empty, "Error al mostrar el reporte.");
             }
         }
+
+
+        public static EmbedToken GetEmbedToken(PowerBIClient client, Guid reportId, IList<Guid> datasetIds, [Optional] Guid targetWorkspaceId)
+        {
+            using (var pbiClient = client)
+            {
+                // Create a request for getting Embed token 
+                // This method works only with new Power BI V2 workspace experience
+                var tokenRequest = new GenerateTokenRequestV2(
+
+                reports: new List<GenerateTokenRequestV2Report>() { new GenerateTokenRequestV2Report(reportId) },
+
+                //datasets: datasetIds.Select(datasetId => new GenerateTokenRequestV2Dataset(datasetId.ToString())).ToList(),
+
+                targetWorkspaces: targetWorkspaceId != Guid.Empty ? new List<GenerateTokenRequestV2TargetWorkspace>() { new GenerateTokenRequestV2TargetWorkspace(targetWorkspaceId) } : null
+                );
+
+                // Generate Embed token
+                var embedToken = pbiClient.EmbedToken.GenerateToken(tokenRequest);
+
+                return embedToken;
+            }
+        }
+
+
+
 
         private void PickerReportPages_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -151,7 +181,7 @@ namespace TimeTrackerBIXF.Views
                 }
 
 
-                string result = await _webView.EvaluateJavaScriptAsync($"SetTokens('{Token}','{EmbedUrl}','{Id}',{(EmbedConfig.Parameter?1:0)},'{EmbedConfig.PTable}','{EmbedConfig.PColumn}','{strOperator}','{strValues}')");
+                string result = await _webView.EvaluateJavaScriptAsync($"SetTokens('{Token}','{EmbedUrl}','{Id}',{(EmbedConfig.Parameter ? 1 : 0)},'{EmbedConfig.PTable}','{EmbedConfig.PColumn}','{strOperator}','{strValues}')");
 
                 Configuring = false;
                 Configured = true;
@@ -173,6 +203,11 @@ namespace TimeTrackerBIXF.Views
                 IsReadyChecking = true;
 
                 string ReportDocRed = await _webView.EvaluateJavaScriptAsync("ReportDocRed()");
+                if (string.IsNullOrEmpty(ReportDocRed))
+                {
+                    IsReadyChecking = false;
+                    return;
+                }
                 if (ReportDocRed.Equals("4"))
                 {
                     StopDocLoadedTimer();
@@ -201,7 +236,7 @@ namespace TimeTrackerBIXF.Views
                 {
                     StopTimer();
 
-                    string PBIError = Loaded.Replace("2","");
+                    string PBIError = Loaded.Replace("2", "");
 
                     await Alerts.HideLoadingPageAsync();
 
@@ -213,8 +248,8 @@ namespace TimeTrackerBIXF.Views
                     {
                         Alerts.ShowAlert(string.Empty, "Error al cargar el reporte de PowerBI");
                     }
-                    
-                   
+
+
                 }
 
                 IsChecking = false;

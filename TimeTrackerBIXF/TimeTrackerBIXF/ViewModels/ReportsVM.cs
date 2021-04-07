@@ -1,5 +1,6 @@
-﻿using Microsoft.PowerBI.Api.V2;
-using Microsoft.PowerBI.Api.V2.Models;
+﻿
+using Microsoft.PowerBI.Api;
+using Microsoft.PowerBI.Api.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -90,7 +91,7 @@ namespace TimeTrackerBIXF.ViewModels
                 }
                 else
                 {
-                    await App.Current.MainPage.Navigation.PushAsync(new ReportViewer(new EmbedConfig() { GroupID = ReportSelected.GroupID, Id = report.Id, EmbedUrl = report.EmbedUrl, ReportName = ReportSelected.Name, Parameter = ReportSelected.Parameter, PColumn = ReportSelected.PColumn, PTable = ReportSelected.PTable, PValue = ReportSelected.PValue }), true);
+                    await App.Current.MainPage.Navigation.PushAsync(new ReportViewer(new EmbedConfig() { GroupID = ReportSelected.GroupID, Id = report.Id.ToString(), EmbedUrl = report.EmbedUrl, ReportName = ReportSelected.Name, Parameter = ReportSelected.Parameter, PColumn = ReportSelected.PColumn, PTable = ReportSelected.PTable, PValue = ReportSelected.PValue }), true);
                 }
 
                 ReportSelected = null;
@@ -164,7 +165,7 @@ namespace TimeTrackerBIXF.ViewModels
         {
             try
             {
-                if(string.IsNullOrEmpty(GroupID) || string.IsNullOrEmpty(Name))
+                if (string.IsNullOrEmpty(GroupID) || string.IsNullOrEmpty(Name))
                 {
                     return null;
                 }
@@ -174,7 +175,7 @@ namespace TimeTrackerBIXF.ViewModels
                 using (var client = new PowerBIClient(new Uri(Constants.ApiUrl), tokenCredentials))
                 {
 
-                    ODataResponseListReport ReportsInGroup = client.Reports.GetReportsInGroup(GroupID);
+                    Microsoft.PowerBI.Api.Models.Reports ReportsInGroup = client.Reports.GetReportsInGroup(Guid.Parse(GroupID));
 
                     if (ReportsInGroup != null)
                     {
@@ -192,7 +193,11 @@ namespace TimeTrackerBIXF.ViewModels
                     }
                 }
             }
-            catch (Exception EX)
+            catch (Microsoft.IdentityModel.Clients.ActiveDirectory.AdalServiceException)
+            {
+
+            }
+            catch (Exception ex)
             {
 
             }

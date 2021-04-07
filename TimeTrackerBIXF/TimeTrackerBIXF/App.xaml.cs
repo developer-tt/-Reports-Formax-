@@ -36,8 +36,8 @@ namespace TimeTrackerBIXF
             UsersB = new UsersB(dbConnection);
             EmbedTokenB = new EmbedTokenB(dbConnection);
 
-            SecureStorage.SetAsync("AppID", "6f965ae2-66e4-42fb-9441-24223cd5bbee");
-            SecureStorage.SetAsync("AppSecret", "rlt/vOo031wEm+KcfFi+2lwbWdvc8DHq7YUF5pot0CE=");
+            SecureStorage.SetAsync("AppID", "c771213b-070e-444b-b5d5-96abd042d923");
+            SecureStorage.SetAsync("AppSecret", "kDO8WF5GuJo3u5qZKray_PZUE16M~b.fP-");
             SecureStorage.SetAsync("TenantID", "f47e4ba5-8a0e-4eaa-ac0b-5f12dee07155");
 
 

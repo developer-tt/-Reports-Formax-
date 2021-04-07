@@ -15,7 +15,8 @@
                 <lottie:AnimationView
                  x:Name="LottieView" 
                  Animation="freportes_loading.json" 
-                 Loop="True" 
+      RepeatCount="10000"
+                    RepeatMode="Restart"
                  AutoPlay="True"
                  HeightRequest="200" 
                  WidthRequest="162"
