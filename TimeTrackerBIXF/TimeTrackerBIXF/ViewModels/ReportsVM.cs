@@ -131,14 +131,7 @@ namespace TimeTrackerBIXF.ViewModels
 
                         GroupIDs = APIAvailableItems.Where(a => !string.IsNullOrEmpty(a.GroupID)).Select(b => b.GroupID).ToList();
 
-
                         await Alerts.HideLoadingPageAsync();
-
-                        //if (GroupIDs != null && GroupIDs.Count > 0)
-                        //{
-                        //    IsRefreshing = false;
-                        //    //GetPowerBIReports();
-                        //}
                     }
                     else
                     {
@@ -181,15 +174,6 @@ namespace TimeTrackerBIXF.ViewModels
                     {
                         Report found = ReportsInGroup.Value.Where(a => a.Name.Equals(Name)).FirstOrDefault();
                         return ReportsInGroup.Value.Where(a => a.Name.Equals(Name)).FirstOrDefault();
-                        //foreach (Report Report in ReportsInGroup.Value)
-                        //{
-                        //    WSReport rpt = APIAvailableItems.Where(a => a.Name.Equals(Report.Name)).FirstOrDefault();
-
-                        //    if (rpt != null)
-                        //    {
-                        //        reports.Add(new WSReport() { Name = Report.Name, Url = Report.EmbedUrl, ReportID = Report.Id, GroupID = GroupID, Parameter = rpt.Parameter, PColumn = rpt.PColumn, PTable = rpt.PTable, PValue = rpt.PValue });
-                        //    }
-                        //}
                     }
                 }
             }

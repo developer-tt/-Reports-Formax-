@@ -37,13 +37,15 @@
         var vstrColumn = '';
         var vstrOperator = '';
 
+        var $reportContainer = '';
         //$(function () {
         //    DocReady = 1;
         //});
 
+        var embedConfiguration = {};
         window.onload = function () { DocReady = 4; };
 
-        function SetTokens(token, url, id, UsesParameter, strTable, strColumn, strOperator, strValues) {
+        function SetTokens(token, url, id, UsesParameter, strTable, strColumn, strOperator, strValues,orientation) {
             // function SetTokens(token, url, id) {
 
             loaded = 0;
@@ -55,11 +57,16 @@
                 report.off();
             }
 
+
+
             // Get models. models contains enums that can be used.
             var models = window['powerbi-client'].models;
             var permissions = models.Permissions.All;
 
-            var embedConfiguration = {
+            var orientationType = orientation === '1' ? models.LayoutType.MobileLandscape : models.LayoutType.MobilePortrait;
+
+
+            embedConfiguration = {
                 type: 'report',
                 tokenType: models.TokenType.Embed,
                 accessToken: token,
@@ -69,13 +76,13 @@
                 pageView: 'fitToWidth',
                 viewMode: models.ViewMode.View,
                 settings: {
-                    filterPaneEnabled: false
+                    panes: {
+                        filters: {
+                            visible: false
+                        }
+                    },
+                    layoutType: orientationType
                 }
-            };
-
-            const newSettings = {
-                filterPaneEnabled: false,
-                layoutType: models.LayoutType.MobileLandscape
             };
 
             var $reportContainer = $('#embedContainer');
@@ -225,6 +232,39 @@
             });
 
             return pageIndex;
+        }
+
+        function changeOrientation(orientation) {
+            try {
+                var models = window['powerbi-client'].models;
+
+
+                if (orientation === '1') {
+                    const newSettingsO = {
+                        layoutType: models.LayoutType.MobileLandscape
+                    };
+
+                    report.updateSettings(newSettingsO);
+                }
+                else {
+                    const newSettingsO = {
+                        layoutType: models.LayoutType.MobilePortrait
+                    };
+
+                    report.updateSettings(newSettingsO);
+                }
+               
+
+                return orientation;
+
+            } catch (error) {
+                return "error => " +error;
+            }
+          
+
+            //report = powerbi.embed($reportContainer.get(0), embedConfiguration);
+
+       
         }
 
     </script>

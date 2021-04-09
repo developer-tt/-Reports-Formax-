@@ -4,7 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             NavigationPage.HasNavigationBar="False"
+                          xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+
+    NavigationPage.HasNavigationBar="False"
              xmlns:local="clr-namespace:TimeTrackerBIXF"
              x:Class="TimeTrackerBIXF.Views.ReportViewer">
     <ContentPage.Content>
@@ -22,18 +24,26 @@
 
             <StackLayout AbsoluteLayout.LayoutBounds="0,0, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
-                <Grid BackgroundColor="Transparent"  Padding="0" RowSpacing="20" Margin="16,20,16,10">
+                <Grid BackgroundColor="Transparent"  Padding="0" RowSpacing="5" Margin="16,20,16,10">
                   
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="8*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label   Style="{StaticResource LabelNFL}" Grid.Row="0" Grid.ColumnSpan="2"  d:Text="Pisa 2019" x:Name="ReportName" TextColor="White" FontSize="36" Grid.Column="0" />
+                    <Label x:Name="ReportName"  IsVisible="false"
+                           Style="{StaticResource LabelNFL}"
+                           Grid.Row="0" Grid.ColumnSpan="2" 
+                           d:Text="Pisa 2019"  TextColor="White" FontSize="36" Grid.Column="0" />
 
 
 
-                    <Frame Padding="0" HasShadow="False" Margin="0" IsClippedToBounds="True" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Visual="Material" BackgroundColor="Transparent">
+                    <Frame x:Name="framePicker" IsVisible="false"
+                        Padding="0" HasShadow="False" Margin="0" 
+                        IsClippedToBounds="True" 
+                        Grid.Row="1" Grid.ColumnSpan="2" 
+                        Grid.Column="0" Visual="Material"
+                        BackgroundColor="Transparent">
                         <StackLayout Spacing="0" Padding="0" Margin="0">
                             <Grid RowSpacing="0" Padding="0" Margin="0">
 
@@ -61,7 +71,8 @@
                   VerticalOptions="FillAndExpand"
                     Padding="8">
 
-                    <WebView x:Name="_webView" BackgroundColor="Red"  VerticalOptions="FillAndExpand"  />
+                    <WebView x:Name="_webView" BackgroundColor="Red"  VerticalOptions="FillAndExpand" android:WebView.EnableZoomControls="true"
+             android:WebView.DisplayZoomControls="true"  />
 
                 </Frame>
 

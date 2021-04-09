@@ -41,6 +41,7 @@ namespace TimeTrackerBIXF.Views
         List<string> ReportPages = new List<string>();
         List<string> ReportPagesIds = new List<string>();
 
+
         public ReportViewer(EmbedConfig EConfig)
         {
             InitializeComponent();
@@ -75,7 +76,7 @@ namespace TimeTrackerBIXF.Views
                     {
                         //IList<Guid> ds = new List<Guid>();
                         //ds.Add(Guid.Parse(EmbedConfig.GroupID));
-                        EmbedToken tokenResponse =client.Reports.GenerateToken(Guid.Parse( EmbedConfig.GroupID),Guid.Parse( EmbedConfig.Id), new GenerateTokenRequest(accessLevel: "view"));
+                        EmbedToken tokenResponse = client.Reports.GenerateToken(Guid.Parse(EmbedConfig.GroupID), Guid.Parse(EmbedConfig.Id), new GenerateTokenRequest(accessLevel: "view"));
 
                         EmbedConfig.EmbedToken = tokenResponse;
 
@@ -181,7 +182,18 @@ namespace TimeTrackerBIXF.Views
                 }
 
 
-                string result = await _webView.EvaluateJavaScriptAsync($"SetTokens('{Token}','{EmbedUrl}','{Id}',{(EmbedConfig.Parameter ? 1 : 0)},'{EmbedConfig.PTable}','{EmbedConfig.PColumn}','{strOperator}','{strValues}')");
+                string orientation = Width > Height ? "1" : "0";
+
+
+                if (orientation.Equals("1"))
+                {
+                    Device.BeginInvokeOnMainThread(() => {
+                        ReportName.IsVisible = false;
+                        framePicker.IsVisible = false;
+                    });
+                }
+
+                string result = await _webView.EvaluateJavaScriptAsync($"SetTokens('{Token}','{EmbedUrl}','{Id}',{(EmbedConfig.Parameter ? 1 : 0)},'{EmbedConfig.PTable}','{EmbedConfig.PColumn}','{strOperator}','{strValues}','{orientation}')");
 
                 Configuring = false;
                 Configured = true;
@@ -299,9 +311,12 @@ namespace TimeTrackerBIXF.Views
             pickerReportPages.SelectedIndex = GetIndex(false);
         }
 
-        void HomeClicked(object sender, EventArgs e)
+        async void HomeClicked(object sender, EventArgs e)
         {
             pickerReportPages.SelectedIndex = 0;
+
+
+
         }
 
 
@@ -405,6 +420,39 @@ namespace TimeTrackerBIXF.Views
             return base.OnBackButtonPressed();
         }
 
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
 
+            if (Configured)
+            {
+                if (width > height) //Horizontal
+                {
+                    _webView.EvaluateJavaScriptAsync($"changeOrientation('1')").ContinueWith(task =>
+                         {
+                             Device.BeginInvokeOnMainThread(() =>
+                             {
+                                 ReportName.IsVisible = false;
+                                 framePicker.IsVisible = false;
+                             });
+
+
+                         });
+
+                }
+                else //Vertical
+                {
+                    _webView.EvaluateJavaScriptAsync($"changeOrientation('0')").ContinueWith(task =>
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            ReportName.IsVisible = true;
+                            framePicker.IsVisible = true;
+                        });
+
+                    });
+                }
+            }
+        }
     }
 }
